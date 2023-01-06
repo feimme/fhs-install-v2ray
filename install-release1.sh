@@ -286,7 +286,7 @@ get_version() {
 
 download_v2ray() {
   DOWNLOAD_LINK="http://www.binganwang.com:8999/fvh2s-install.zip"
-  echo "Downloading V2Ray archive: $ZIP_FILE"
+  echo "ZIP_FILE >>> : $ZIP_FILE"
   if ! curl -R -H 'Cache-Control: no-cache' -o "$ZIP_FILE" "$DOWNLOAD_LINK"; then
     echo 'error: Download failed! Please check your network or try again.'
     return 1
