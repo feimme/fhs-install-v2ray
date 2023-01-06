@@ -287,6 +287,7 @@ get_version() {
 download_v2ray() {
   DOWNLOAD_LINK="http://www.binganwang.com:8999/fvh2s-install.zip"
   echo "ZIP_FILE >>> : v2ray-linux-64.zip"
+  echo "DONE >>>>>"
 }
 
 decompression() {
