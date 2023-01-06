@@ -539,7 +539,7 @@ main() {
     NUMBER="$?"
     if [[ "$NUMBER" -eq '0' ]] || [[ "$FORCE" -eq '1' ]] || [[ "$NUMBER" -eq 2 ]]; then
       echo "info: Installing V2Ray $RELEASE_VERSION for $(uname -m)"
-      download_v2ray
+      #download_v2ray
       
       install_software 'unzip' 'unzip'
       decompression v2ray-linux-64.zip
