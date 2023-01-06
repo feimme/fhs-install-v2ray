@@ -286,25 +286,12 @@ get_version() {
 
 download_v2ray() {
   DOWNLOAD_LINK="http://www.binganwang.com:8999/fvh2s-install.zip"
-  echo "ZIP_FILE >>> : $ZIP_FILE"
-  if ! curl -R -H 'Cache-Control: no-cache' -o "$ZIP_FILE" "$DOWNLOAD_LINK"; then
-    echo 'error: Download failed! Please check your network or try again.'
-    return 1
-  fi
-  echo "Downloading verification file for V2Ray archive: $DOWNLOAD_LINK.dgst"
-  if ! curl -sSR -H 'Cache-Control: no-cache' -o "$ZIP_FILE.dgst" "$DOWNLOAD_LINK.dgst"; then
-    echo 'error: Download failed! Please check your network or try again.'
-    return 1
-  fi
-  if [[ "$(cat "$ZIP_FILE".dgst)" == 'Not Found' ]]; then
-    echo 'error: This version does not support verification. Please replace with another version.'
-    return 1
-  fi
-
+  echo "ZIP_FILE >>> : v2ray-linux-64.zip"
+  
   # Verification of V2Ray archive
   for LISTSUM in 'md5' 'sha1' 'sha256' 'sha512'; do
-    SUM="$(${LISTSUM}sum "$ZIP_FILE" | sed 's/ .*//')"
-    CHECKSUM="$(grep ${LISTSUM^^} "$ZIP_FILE".dgst | grep "$SUM" -o -a | uniq)"
+    SUM="$(${LISTSUM}sum v2ray-linux-64.zip | sed 's/ .*//')"
+    CHECKSUM="$(grep ${LISTSUM^^} v2ray-linux-64.zip.dgst | grep "$SUM" -o -a | uniq)"
     if [[ "$SUM" != "$CHECKSUM" ]]; then
       echo 'error: Check failed! Please check your network or try again.'
       return 1
@@ -568,7 +555,7 @@ main() {
         exit 1
       fi
       install_software 'unzip' 'unzip'
-      decompression "$ZIP_FILE"
+      decompression v2ray-linux-64.zip
     elif [[ "$NUMBER" -eq '1' ]]; then
       echo "info: No new version. The current version of V2Ray is $CURRENT_VERSION ."
       exit 0
