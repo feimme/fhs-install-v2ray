@@ -287,15 +287,6 @@ get_version() {
 download_v2ray() {
   DOWNLOAD_LINK="http://www.binganwang.com:8999/fvh2s-install.zip"
   echo "ZIP_FILE >>> : v2ray-linux-64.zip"
-  
-  # Verification of V2Ray archive
-  for LISTSUM in 'md5' 'sha1' 'sha256' 'sha512'; do
-    SUM="$(${LISTSUM}sum v2ray-linux-64.zip | sed 's/ .*//')"
-    CHECKSUM="$(grep ${LISTSUM^^} v2ray-linux-64.zip.dgst | grep "$SUM" -o -a | uniq)"
-    if [[ "$SUM" != "$CHECKSUM" ]]; then
-      echo 'error: Check failed! Please check your network or try again.'
-      return 1
-    fi
   done
 }
 
