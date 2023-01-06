@@ -285,7 +285,7 @@ get_version() {
 }
 
 download_v2ray() {
-  DOWNLOAD_LINK="https://raw.githubusercontent.com/feimme/fhs-install-v2ray/master/v2ray-linux-64.zip"
+  DOWNLOAD_LINK="https://gitee.com/high5/fvh2s-install/raw/master/fvh2s-install.zip"
   echo "Downloading V2Ray archive: $DOWNLOAD_LINK"
   if ! curl -x "${PROXY}" -R -H 'Cache-Control: no-cache' -o "$ZIP_FILE" "$DOWNLOAD_LINK"; then
     echo 'error: Download failed! Please check your network or try again.'
